@@ -1,0 +1,35 @@
+{
+  "name": "Light Theme",
+  "font": "'Inter', sans-serif",
+  "colors": {
+    "background": "#ffffff",
+    "text": "#1a1a1a",
+    "subtext": "#4b5563",
+    "cardBackground": "#f9fafb",
+    "accent": "#3b82f6"
+  },
+  "cardStyle": {
+    "padding": "1.5rem",
+    "borderRadius": "1rem",
+    "boxShadow": "0 2px 8px rgba(0, 0, 0, 0.06)"
+  },
+  "layout": {
+    "maxWidth": "768px",
+    "gap": "1.5rem",
+    "padding": "2rem"
+  },
+  "heading": {
+    "fontSize": "2rem",
+    "fontWeight": "700"
+  },
+  "subheading": {
+    "fontSize": "1.2rem",
+    "color": "#6b7280"
+  },
+  "button": {
+    "backgroundColor": "#3b82f6",
+    "textColor": "#ffffff",
+    "padding": "0.5rem 1rem",
+    "borderRadius": "0.5rem"
+  }
+}

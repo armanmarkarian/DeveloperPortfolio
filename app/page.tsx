@@ -1,7 +1,7 @@
 // app/page.tsx
 import React from "react";
 import { getSession } from "../lib/auth";
-import AuthButtons from "../components/Buttons";
+import Buttons from "../components/Buttons";
 
 export default async function Home() {
   const session = await getSession();
@@ -9,7 +9,7 @@ export default async function Home() {
   return (
     <div>
       {session ? <p>Welcome, {session.user?.name}</p> : <p>Please sign in</p>}
-      <AuthButtons />
+      <Buttons />
     </div>
   );
 }

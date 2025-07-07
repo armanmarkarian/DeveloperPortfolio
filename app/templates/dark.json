@@ -1,0 +1,35 @@
+{
+  "name": "Dark Theme",
+  "font": "'Fira Code', monospace",
+  "colors": {
+    "background": "#0f172a",
+    "text": "#e2e8f0",
+    "subtext": "#94a3b8",
+    "cardBackground": "#1e293b",
+    "accent": "#38bdf8"
+  },
+  "cardStyle": {
+    "padding": "1.5rem",
+    "borderRadius": "1rem",
+    "boxShadow": "0 2px 8px rgba(255, 255, 255, 0.05)"
+  },
+  "layout": {
+    "maxWidth": "768px",
+    "gap": "1.5rem",
+    "padding": "2rem"
+  },
+  "heading": {
+    "fontSize": "2rem",
+    "fontWeight": "600"
+  },
+  "subheading": {
+    "fontSize": "1.2rem",
+    "color": "#cbd5e1"
+  },
+  "button": {
+    "backgroundColor": "#38bdf8",
+    "textColor": "#0f172a",
+    "padding": "0.5rem 1rem",
+    "borderRadius": "0.5rem"
+  }
+}
