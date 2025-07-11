@@ -1,6 +1,6 @@
 # Developer Portfolios – GitHub Portfolio Builder
 
-Create beautiful, customizable developer portfolios from your GitHub repositories. No design skills required – just log in with GitHub, pick your repos, pick a template, and publish!
+Create beautiful, customizable developer portfolios from your GitHub repositories. No design skills required – just log in with GitHub, pick your repos, pick a template, and publish!git p
 
 ## Features
 
