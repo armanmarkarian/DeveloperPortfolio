@@ -6,8 +6,8 @@ type Props = {
   params: { username: string };
 };
 
-export default async function PublicProfilePage({ params }: Props) {
-  const data = await getPortfolioByUsername(params.username);
+export default async function PublicProfilePage(props: any) {
+  const data = await getPortfolioByUsername(props.params.username);
 
   if (!data) return notFound();
 
