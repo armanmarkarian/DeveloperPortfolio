@@ -2,12 +2,9 @@ import { notFound } from 'next/navigation';
 import TemplatePreview from '@/components/Preview';
 import { getPortfolioByUsername } from '@/lib/firebase';
 
-export default async function PublicProfilePage({
-  params,
-}: {
-  params: { username: string };
-}) {
-  const data = await getPortfolioByUsername(params.username);
+export default async function PublicProfilePage(props: any) {
+  const username = props.params.username;
+  const data = await getPortfolioByUsername(username);
 
   if (!data) return notFound();
 
