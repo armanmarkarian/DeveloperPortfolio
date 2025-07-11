@@ -127,7 +127,9 @@ export default function Builder({
       </button>
 
       {status === 'publishing' && <p className="text-sm text-gray-500 mt-2">Publishing...</p>}
-      {status === 'published' && <p className="text-sm text-green-600 mt-2">Published successfully! View your portfolio at <a href={`http://localhost:3000/${username}`}>localhost:3000/{username}</a></p>}
+      {status === 'published' && <p className="text-sm text-green-600 mt-2">Published successfully! View your portfolio at <a href={`${process.env.NEXTAUTH_URL}/${username}`}>
+  {process.env.NEXTAUTH_URL}/{username}
+</a></p>}
       {status === 'error' && <p className="text-sm text-red-600 mt-2">Failed to publish.</p>}
     </div>
   );
