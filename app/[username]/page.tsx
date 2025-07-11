@@ -2,11 +2,11 @@ import { notFound } from 'next/navigation';
 import TemplatePreview from '@/components/Preview';
 import { getPortfolioByUsername } from '@/lib/firebase';
 
-type Props = {
+export default async function PublicProfilePage({
+  params,
+}: {
   params: { username: string };
-};
-
-export default async function PublicProfilePage({ params }: Props) {
+}) {
   const data = await getPortfolioByUsername(params.username);
 
   if (!data) return notFound();
@@ -22,4 +22,5 @@ export default async function PublicProfilePage({ params }: Props) {
         showGithubIcon={data.showGithubIcon}
       />
     </div>
-  )};
+  );
+}
