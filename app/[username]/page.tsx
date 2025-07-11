@@ -1,6 +1,25 @@
-import NextAuth from "next-auth";
-import { authOptions } from "@/lib/authOptions";
+import { notFound } from 'next/navigation';
+import TemplatePreview from '@/components/Preview';
+import { getPortfolioByUsername } from '@/lib/firebase';
 
-const handler = NextAuth(authOptions);
+type Props = {
+  params: { username: string };
+};
 
-export { handler as GET, handler as POST };
+export default async function PublicProfilePage({ params }: Props) {
+  const data = await getPortfolioByUsername(params.username);
+
+  if (!data) return notFound();
+
+  return (
+    <div className="min-h-screen">
+      <TemplatePreview
+        username={data.username}
+        name={data.name}
+        subtext={data.subtext}
+        repoLinks={data.repoLinks}
+        templateKey={data.templateKey}
+        showGithubIcon={data.showGithubIcon}
+      />
+    </div>
+  )};
