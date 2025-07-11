@@ -31,6 +31,7 @@ export default function Builder({
   setShowGithubIcon,
 }: BuilderProps) {
   const [status, setStatus] = React.useState<'idle' | 'publishing' | 'published' | 'error'>('idle');
+  const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL ?? 'http://localhost:3000';
 
   const handleRepoChange = (value: string, index: number) => {
     const newRepos = [...repos];
@@ -127,8 +128,8 @@ export default function Builder({
       </button>
 
       {status === 'publishing' && <p className="text-sm text-gray-500 mt-2">Publishing...</p>}
-      {status === 'published' && <p className="text-sm text-green-600 mt-2">Published successfully! View your portfolio at <a href={`${process.env.NEXTAUTH_URL}/${username}`}>
-  {process.env.NEXTAUTH_URL}/{username}
+      {status === 'published' && <p className="text-sm text-green-600 mt-2">Published successfully! View your portfolio at <a href={`${baseUrl}/${username}`}>
+  {baseUrl}/{username}
 </a></p>}
       {status === 'error' && <p className="text-sm text-red-600 mt-2">Failed to publish.</p>}
     </div>
