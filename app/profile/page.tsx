@@ -1,28 +1,52 @@
-import { getSession } from "@/lib/auth";
-import Buttons from "../../components/Buttons";
-import Builder from "@/components/Builder"; // adjust path as needed
+"use client";
 
-export default async function ProfilePage() {
-  const session = await getSession();
+import { useSession } from 'next-auth/react';
+import { useState } from 'react';
+import Builder from '@/components/Builder';
+import TemplatePreview from '@/components/Preview';
+import { TemplateKey } from '@/lib/templates';
 
-  if (!session) {
-    return <p>You must be signed in to view this page.</p>;
-  }
+export default function BuilderPage() {
+  const { data: session, status } = useSession();
+  const [name, setName] = useState('');
+  const [subtext, setSubtext] = useState('');
+  const [repos, setRepos] = useState<string[]>(['']);
+  const [selectedTemplate, setSelectedTemplate] = useState<TemplateKey>('light');
+  const [showGithubIcon, setShowGithubIcon] = useState(false);
+
+  if (status === 'loading') return <p className="p-6">Loading...</p>;
+  if (!session) return <p className="p-6">You must be signed in to access this page.</p>;
+
+  const username = session.user?.name || '';
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold">Welcome, {session.user?.name}</h1>
-      <p>Email: {session.user?.email}</p>
+    <div className="flex min-h-screen">
+      <div className="md:w-1/3 lg:w-1/4 bg-gray-100 p-6 border-r overflow-y-auto">
+        <Builder
+          username={username}
+          name={name}
+          setName={setName}
+          subtext={subtext}
+          setSubtext={setSubtext}
+          repos={repos}
+          setRepos={setRepos}
+          selectedTemplate={selectedTemplate}
+          setSelectedTemplate={setSelectedTemplate}
+          showGithubIcon={showGithubIcon}
+          setShowGithubIcon={setShowGithubIcon}
+        />
+      </div>
 
-      <Buttons />
-
-      <hr className="my-6" />
-
-      <h2 className="text-2xl font-semibold">Build Your Portfolio</h2>
-      <Builder
-        defaultName={session.user?.name || ""}
-        defaultSubtext="A passionate developer."
-      />
+      <div className="flex-1 overflow-y-auto">
+        <TemplatePreview
+          username={username}
+          name={name}
+          subtext={subtext}
+          repoLinks={repos}
+          templateKey={selectedTemplate}
+          showGithubIcon={showGithubIcon}
+        />
+      </div>
     </div>
   );
 }

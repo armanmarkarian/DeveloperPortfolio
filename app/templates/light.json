@@ -14,9 +14,9 @@
     "boxShadow": "0 2px 8px rgba(0, 0, 0, 0.06)"
   },
   "layout": {
-    "maxWidth": "768px",
+    "maxWidth": "100%",
     "gap": "1.5rem",
-    "padding": "2rem"
+    "padding": "0"
   },
   "heading": {
     "fontSize": "2rem",
