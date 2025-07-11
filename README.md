@@ -2,8 +2,6 @@
 
 Create beautiful, customizable developer portfolios from your GitHub repositories. No design skills required – just log in with GitHub, pick your repos, pick a template, and publish!
 
----
-
 ## Features
 
 - **Template-Based**: Choose from a selection of sleek, responsive templates.
