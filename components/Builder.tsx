@@ -83,7 +83,7 @@ export default function Builder({
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] p-6">
       <h1 className="text-2xl font-bold mb-4">Portfolio Builder</h1>
 
       <input
