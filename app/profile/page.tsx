@@ -15,7 +15,7 @@ type Project = {
 
 export default function BuilderPage() {
   const { data: session, status } = useSession();
-  const [name, setName] = useState('');
+  const [name, setName] = useState(() => session?.user?.name || '');
   const [subtext, setSubtext] = useState('');
   const [repos, setRepos] = useState<string[]>(['']);
   const [selectedTemplate, setSelectedTemplate] = useState<TemplateKey>('light');
