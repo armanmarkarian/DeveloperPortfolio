@@ -22,7 +22,7 @@ export default function BuilderPage() {
   const [showGithubIcon, setShowGithubIcon] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
 
-  const username = session?.user?.name || '';
+  const username = session?.user?.username || '';
 
   useEffect(() => {
     const fetchPortfolio = async () => {

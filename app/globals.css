@@ -22,8 +22,8 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
-    background-color: var(--background);
-    color: var(--foreground);
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
     font-family: var(--font-sans);
     transition: background-color 0.3s ease, color 0.3s ease;
     line-height: 1.6;
