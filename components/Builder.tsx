@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { templates, TemplateKey } from '@/lib/templates';
+import { Plus, X } from 'lucide-react';
 
 type BuilderProps = {
   username: string;
@@ -123,9 +124,10 @@ export default function Builder({
                 const updated = projects.filter((_, i) => i !== idx);
                 setProjects(updated);
               }}
-              className="absolute top-2 right-2 text-red-500"
+              className="absolute top-2 right-2 text-gray-400 hover:text-red-500 transition"
+              aria-label="Remove project"
             >
-              ✕
+              <X size={18} />
             </button>
 
             <input
@@ -174,33 +176,34 @@ export default function Builder({
           onClick={() => {
             const last = projects[projects.length - 1];
             if (!last || (last.name && last.description)) {
-              addProject();
+              setProjects([...projects, { name: '', description: '', link: '', tags: [] }]);
             }
           }}
-          className="text-blue-500 mt-2"
+          className="text-blue-600 mt-2 flex items-center gap-1"
         >
-          + Add another project
+          <Plus size={18} /> Add Project
         </button>
       </div>
 
       <div className="mt-6">
         <label className="font-semibold">GitHub Repositories:</label>
         {repos.map((repo, index) => (
-          <div key={index} className="relative">
+          <div key={index} className="relative mt-2">
             <input
               placeholder="https://github.com/user/repo"
               value={repo}
               onChange={(e) => handleRepoChange(e.target.value, index)}
-              className="w-full p-2 mt-2 border rounded pr-8"
+              className="w-full p-2 border rounded pr-8"
             />
             <button
               onClick={() => {
                 const updated = repos.filter((_, i) => i !== index);
                 setRepos(updated);
               }}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500 transition"
+              aria-label="Remove repo"
             >
-              ✕
+              <X size={18} />
             </button>
           </div>
         ))}
@@ -208,12 +211,12 @@ export default function Builder({
           onClick={() => {
             const last = repos[repos.length - 1];
             if (last && last.trim() !== '') {
-              addRepoField();
+              setRepos([...repos, '']);
             }
           }}
-          className="text-blue-500 mt-3"
+          className="text-blue-600 mt-3 flex items-center gap-1"
         >
-          + Add another repo
+          <Plus size={18} /> Add Repo
         </button>
       </div>
 

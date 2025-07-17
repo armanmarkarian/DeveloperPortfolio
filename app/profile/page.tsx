@@ -1,7 +1,7 @@
 "use client";
 
 import { useSession } from 'next-auth/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Builder from '@/components/Builder';
 import TemplatePreview from '@/components/Preview';
 import { TemplateKey } from '@/lib/templates';
@@ -22,10 +22,35 @@ export default function BuilderPage() {
   const [showGithubIcon, setShowGithubIcon] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
 
+  const username = session?.user?.name || '';
+
+  useEffect(() => {
+    const fetchPortfolio = async () => {
+      if (!username) return;
+
+      try {
+        const res = await fetch(`/api/portfolio/${username}`);
+        if (!res.ok) return;
+
+        const data = await res.json();
+        setName(data.name || '');
+        setSubtext(data.subtext || '');
+        setRepos(data.repoLinks?.length ? data.repoLinks : ['']);
+        setSelectedTemplate(data.templateKey || 'light');
+        setShowGithubIcon(!!data.showGithubIcon);
+        setProjects(data.projects || []);
+      } catch (err) {
+        console.error('Failed to load portfolio:', err);
+      }
+    };
+
+    if (status === 'authenticated') {
+      fetchPortfolio();
+    }
+  }, [status, username]);
+
   if (status === 'loading') return <p className="p-6">Loading...</p>;
   if (!session) return <p className="p-6">You must be signed in to access this page.</p>;
-
-  const username = session.user?.name || '';
 
   return (
     <div className="flex min-h-screen">
