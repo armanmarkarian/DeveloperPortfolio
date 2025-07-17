@@ -117,7 +117,17 @@ export default function Builder({
       <div className="mt-6">
         <label className="font-semibold">Projects:</label>
         {projects.map((proj, idx) => (
-          <div key={idx} className="border p-3 mt-3 rounded bg-gray-50">
+          <div key={idx} className="border p-3 mt-3 rounded bg-gray-50 relative">
+            <button
+              onClick={() => {
+                const updated = projects.filter((_, i) => i !== idx);
+                setProjects(updated);
+              }}
+              className="absolute top-2 right-2 text-red-500"
+            >
+              ✕
+            </button>
+
             <input
               className="w-full p-2 mb-2 border rounded"
               placeholder="Project Name"
@@ -160,7 +170,15 @@ export default function Builder({
             />
           </div>
         ))}
-        <button onClick={addProject} className="text-blue-500 mt-2">
+        <button
+          onClick={() => {
+            const last = projects[projects.length - 1];
+            if (!last || (last.name && last.description)) {
+              addProject();
+            }
+          }}
+          className="text-blue-500 mt-2"
+        >
           + Add another project
         </button>
       </div>
@@ -168,15 +186,33 @@ export default function Builder({
       <div className="mt-6">
         <label className="font-semibold">GitHub Repositories:</label>
         {repos.map((repo, index) => (
-          <input
-            key={index}
-            placeholder="https://github.com/user/repo"
-            value={repo}
-            onChange={(e) => handleRepoChange(e.target.value, index)}
-            className="w-full p-2 mt-2 border rounded"
-          />
+          <div key={index} className="relative">
+            <input
+              placeholder="https://github.com/user/repo"
+              value={repo}
+              onChange={(e) => handleRepoChange(e.target.value, index)}
+              className="w-full p-2 mt-2 border rounded pr-8"
+            />
+            <button
+              onClick={() => {
+                const updated = repos.filter((_, i) => i !== index);
+                setRepos(updated);
+              }}
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-red-500"
+            >
+              ✕
+            </button>
+          </div>
         ))}
-        <button onClick={addRepoField} className="text-blue-500 mt-3">
+        <button
+          onClick={() => {
+            const last = repos[repos.length - 1];
+            if (last && last.trim() !== '') {
+              addRepoField();
+            }
+          }}
+          className="text-blue-500 mt-3"
+        >
           + Add another repo
         </button>
       </div>
