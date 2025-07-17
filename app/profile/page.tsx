@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Builder from '@/components/Builder';
 import TemplatePreview from '@/components/Preview';
 import { TemplateKey } from '@/lib/templates';
+import Buttons from "@/components/Buttons";
 
 type Project = {
   name: string;

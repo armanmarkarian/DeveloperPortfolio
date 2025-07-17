@@ -3,6 +3,7 @@
 import React from 'react';
 import { templates, TemplateKey } from '@/lib/templates';
 import { Plus, X } from 'lucide-react';
+import Buttons from "@/components/Buttons";
 
 type BuilderProps = {
   username: string;
@@ -252,6 +253,7 @@ export default function Builder({
       {status === 'error' && (
         <p className="text-sm text-red-600 mt-2">Failed to publish.</p>
       )}
+    <Buttons />
     </div>
   );
 }
