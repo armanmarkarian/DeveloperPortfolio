@@ -20,6 +20,7 @@ export default async function PublicProfilePage(props: any) {
         repoLinks={data.repoLinks}
         templateKey={data.templateKey}
         showGithubIcon={data.showGithubIcon}
+        projects={data.projects}
       />
     </div>
   )};

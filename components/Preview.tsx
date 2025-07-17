@@ -5,6 +5,13 @@ import { templates, TemplateKey } from '@/lib/templates';
 import { FaGithub } from 'react-icons/fa';
 import React from 'react'
 
+type Project = {
+  name: string;
+  description: string;
+  link: string;
+  tags: string[];
+};
+
 type Props = {
   username: string;
   name: string;
@@ -12,11 +19,61 @@ type Props = {
   repoLinks: string[];
   templateKey: TemplateKey;
   showGithubIcon: boolean;
+  projects: Project[];
 };
 
-export default function TemplatePreview({ username, name, subtext, repoLinks, templateKey, showGithubIcon }: Props) {
+export default function TemplatePreview({ username, name, subtext, repoLinks, templateKey, showGithubIcon, projects = [], }: Props) {
   const [repos, setRepos] = useState<any[]>([]);
   const template = templates[templateKey];
+
+  {projects.length > 0 && (
+    <div
+      className="grid mt-6"
+      style={{
+        gap: template.layout?.gap,
+      }}
+    >
+      {projects.map((proj, i) => (
+        <div
+          key={`custom-${i}`}
+          style={{
+            backgroundColor: template.colors.cardBackground,
+            padding: template.cardStyle.padding,
+            borderRadius: template.cardStyle.borderRadius,
+            boxShadow: template.cardStyle.boxShadow,
+          }}
+        >
+          <h3 style={{ fontWeight: 700 }}>{proj.name}</h3>
+          <p>{proj.description}</p>
+          <div className="flex flex-wrap gap-2 mt-2 text-sm">
+            {proj.tags.map((tag, idx) => (
+              <span
+                key={idx}
+                className="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          {proj.link && (
+            <a
+              href={proj.link}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                color: template.colors.accent,
+                textDecoration: 'underline',
+                display: 'inline-block',
+                marginTop: '0.5rem',
+              }}
+            >
+              View Project
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  )}
 
   useEffect(() => {
     async function fetchRepos() {

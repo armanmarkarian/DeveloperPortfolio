@@ -6,6 +6,13 @@ import Builder from '@/components/Builder';
 import TemplatePreview from '@/components/Preview';
 import { TemplateKey } from '@/lib/templates';
 
+type Project = {
+  name: string;
+  description: string;
+  link: string;
+  tags: string[];
+};
+
 export default function BuilderPage() {
   const { data: session, status } = useSession();
   const [name, setName] = useState('');
@@ -13,6 +20,7 @@ export default function BuilderPage() {
   const [repos, setRepos] = useState<string[]>(['']);
   const [selectedTemplate, setSelectedTemplate] = useState<TemplateKey>('light');
   const [showGithubIcon, setShowGithubIcon] = useState(false);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   if (status === 'loading') return <p className="p-6">Loading...</p>;
   if (!session) return <p className="p-6">You must be signed in to access this page.</p>;
@@ -34,6 +42,8 @@ export default function BuilderPage() {
           setSelectedTemplate={setSelectedTemplate}
           showGithubIcon={showGithubIcon}
           setShowGithubIcon={setShowGithubIcon}
+          projects={projects}
+          setProjects={setProjects}
         />
       </div>
 
@@ -45,6 +55,7 @@ export default function BuilderPage() {
           repoLinks={repos}
           templateKey={selectedTemplate}
           showGithubIcon={showGithubIcon}
+          projects={projects}
         />
       </div>
     </div>

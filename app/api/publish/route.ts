@@ -4,7 +4,16 @@ import { adminDb } from '@/lib/firebaseAdmin';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { username, name, subtext, repoLinks, templateKey, showGithubIcon } = body;
+    const {
+      username,
+      name,
+      subtext,
+      repoLinks,
+      projects,
+      templateKey,
+      showGithubIcon,
+    } = body;
+
     console.log(body);
 
     if (!username || typeof username !== 'string') {
@@ -15,11 +24,16 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'repoLinks must be an array' }, { status: 400 });
     }
 
+    if (projects && !Array.isArray(projects)) {
+      return NextResponse.json({ error: 'projects must be an array' }, { status: 400 });
+    }
+
     await adminDb.collection('portfolios').doc(username).set({
       username,
       name: name || '',
       subtext: subtext || '',
       repoLinks,
+      projects: projects || [],
       templateKey: templateKey || 'light',
       showGithubIcon,
     });
