@@ -1,33 +1,33 @@
 {
     "name": "Green",
-    "font": "'Nunito', sans-serif",
+    "font": "'Manrope', sans-serif",
     "colors": {
-      "background": "#f3f4f6",
-      "text": "#1f2937",
-      "subtext": "#6b7280",
+      "background": "#e6f9ec",
+      "text": "#0f2e1e",
+      "subtext": "#3f5f4b",
       "cardBackground": "#ffffff",
-      "accent": "#10b981"
+      "accent": "#22c55e"
     },
     "cardStyle": {
       "padding": "1.5rem",
       "borderRadius": "1rem",
-      "boxShadow": "0 2px 4px rgba(0, 0, 0, 0.05)"
+      "boxShadow": "0 2px 12px rgba(0, 0, 0, 0.05)"
     },
     "layout": {
-      "maxWidth": "720px",
-      "gap": "1.25rem",
-      "padding": "1.75rem"
+      "maxWidth": "820px",
+      "gap": "1.5rem",
+      "padding": "2rem"
     },
     "heading": {
-      "fontSize": "1.8rem",
-      "fontWeight": "600"
+      "fontSize": "2.1rem",
+      "fontWeight": "700"
     },
     "subheading": {
-      "fontSize": "1.1rem",
-      "color": "#6b7280"
+      "fontSize": "1.15rem",
+      "color": "#4d7c67"
     },
     "button": {
-      "backgroundColor": "#10b981",
+      "backgroundColor": "#22c55e",
       "textColor": "#ffffff",
       "padding": "0.5rem 1rem",
       "borderRadius": "0.5rem"
