@@ -24,15 +24,17 @@ export default async function Home() {
           {session ? `Welcome, ${session.user?.name}` : "Sign in to your developer portfolio"}
         </h1>
 
-        {session && (
-          <Link href="/profile">
-            <button className="inline-flex items-center justify-center gap-3 bg-black hover:bg-gray-900 text-white px-6 py-3 rounded-xl font-medium shadow transition-colors">
-              Edit Portfolio
-            </button>
-          </Link>
-        )}
+        <div className="space-y-4">
+          {session && (
+            <Link href="/profile">
+              <button className="inline-flex items-center justify-center gap-3 bg-black hover:bg-gray-900 text-white px-6 py-3 rounded-xl font-medium shadow transition-colors">
+                Edit Portfolio
+              </button>
+            </Link>
+          )}
 
-        <Buttons />
+          <Buttons />
+        </div>
       </div>
     </main>
   );

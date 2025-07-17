@@ -236,7 +236,7 @@ export default function Builder({
       <button
         onClick={handlePublish}
         disabled={status === 'publishing'}
-        className="w-full bg-blue-600 text-white py-2 rounded mt-6 hover:bg-blue-700"
+        className="w-full bg-blue-600 text-white py-2 rounded-xl mt-6 hover:bg-blue-700"
       >
         Publish
       </button>
@@ -253,7 +253,10 @@ export default function Builder({
       {status === 'error' && (
         <p className="text-sm text-red-600 mt-2">Failed to publish.</p>
       )}
-    <Buttons />
+
+      <div className="mt-6">
+        <Buttons />
+      </div>
     </div>
   );
 }
