@@ -32,7 +32,7 @@ export default async function Home() {
           </Link>
         )}
 
-        <div className="mt-6">
+        <div className="mt-3">
           <Buttons />
         </div>
       </div>

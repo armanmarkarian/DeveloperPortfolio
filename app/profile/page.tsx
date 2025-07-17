@@ -72,7 +72,7 @@ export default function BuilderPage() {
         />
       </div>
 
-      <div className="flex-1 overflow-y-auto min-h-[300px] p-4">
+      <div className="flex-1 overflow-y-auto min-h-[300px]">
         <TemplatePreview
           username={username}
           name={name}
