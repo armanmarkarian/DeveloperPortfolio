@@ -2,11 +2,11 @@
     "name": "Blue",
     "font": "'Roboto', sans-serif",
     "colors": {
-      "background": "#e0f2ff",
+      "background": "#dbeafe",
       "text": "#0f172a",
       "subtext": "#475569",
       "cardBackground": "#ffffff",
-      "accent": "#1d4ed8"
+      "accent": "#1e40af"
     },
     "cardStyle": {
       "padding": "1.25rem",
