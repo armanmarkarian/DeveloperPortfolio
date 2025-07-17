@@ -38,9 +38,10 @@ export default function Builder({
   setSelectedTemplate,
   showGithubIcon,
   setShowGithubIcon,
+  projects,
+  setProjects,
 }: BuilderProps) {
   const [status, setStatus] = React.useState<'idle' | 'publishing' | 'published' | 'error'>('idle');
-  const [projects, setProjects] = React.useState<Project[]>([]);
   const baseUrl = process.env.NEXT_PUBLIC_NEXTAUTH_URL ?? 'http://localhost:3000';
 
   const handleRepoChange = (value: string, index: number) => {
@@ -66,7 +67,7 @@ export default function Builder({
           name,
           subtext,
           repoLinks: repos,
-          projects, // include custom projects
+          projects,
           templateKey: selectedTemplate,
           showGithubIcon,
         }),
