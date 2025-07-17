@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPortfolioByUsername } from '@/lib/firebase';
 
-export async function GET(
-  req: NextRequest,
-  context: { params: Record<string, string | string[]> }
-) {
-  const { username } = context.params;
+export async function GET(req: NextRequest) {
+  const url = new URL(req.url);
+  const username = url.pathname.split('/').pop();
 
-  if (typeof username !== 'string' || !username) {
+  if (!username || typeof username !== 'string') {
     return NextResponse.json({ error: 'Missing or invalid username' }, { status: 400 });
   }
 
