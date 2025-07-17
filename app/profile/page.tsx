@@ -54,7 +54,7 @@ export default function BuilderPage() {
 
   return (
     <div className="flex min-h-screen">
-      <div className="md:w-1/3 lg:w-1/4 bg-gray-100 p-6 border-r overflow-y-auto">
+      <div className="md:w-1/3 lg:w-1/4 bg-[var(--background)] text-[var(--foreground)] p-6 border-r overflow-y-auto">
         <Builder
           username={username}
           name={name}
