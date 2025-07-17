@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import Builder from '@/components/Builder';
 import TemplatePreview from '@/components/Preview';
 import { TemplateKey } from '@/lib/templates';
-import Buttons from "@/components/Buttons";
 
 type Project = {
   name: string;
@@ -54,8 +53,8 @@ export default function BuilderPage() {
   if (!session) return <p className="p-6">You must be signed in to access this page.</p>;
 
   return (
-    <div className="flex min-h-screen">
-      <div className="md:w-1/3 lg:w-1/4 bg-[var(--background)] text-[var(--foreground)] p-6 border-r overflow-y-auto">
+    <div className="flex flex-col md:flex-row min-h-screen">
+      <div className="w-full md:w-1/3 lg:w-1/4 bg-[var(--background)] text-[var(--foreground)] p-6 border-b md:border-b-0 md:border-r overflow-y-auto">
         <Builder
           username={username}
           name={name}
@@ -73,7 +72,7 @@ export default function BuilderPage() {
         />
       </div>
 
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto min-h-[300px] p-4">
         <TemplatePreview
           username={username}
           name={name}
