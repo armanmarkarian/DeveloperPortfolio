@@ -1,0 +1,36 @@
+{
+    "name": "Glass",
+    "font": "'Poppins', sans-serif",
+    "colors": {
+      "background": "#e0f2fe",
+      "text": "#0f172a",
+      "subtext": "#334155",
+      "cardBackground": "rgba(255, 255, 255, 0.4)",
+      "accent": "#3b82f6"
+    },
+    "cardStyle": {
+      "padding": "1.5rem",
+      "borderRadius": "1rem",
+      "boxShadow": "0 8px 32px rgba(31, 38, 135, 0.2)",
+      "backdropFilter": "blur(10px)"
+    },
+    "layout": {
+      "maxWidth": "800px",
+      "gap": "2rem",
+      "padding": "2.5rem"
+    },
+    "heading": {
+      "fontSize": "2.2rem",
+      "fontWeight": "700"
+    },
+    "subheading": {
+      "fontSize": "1.2rem",
+      "color": "#475569"
+    },
+    "button": {
+      "backgroundColor": "#3b82f6",
+      "textColor": "#ffffff",
+      "padding": "0.5rem 1.25rem",
+      "borderRadius": "0.75rem"
+    }
+  }
