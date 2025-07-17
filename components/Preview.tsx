@@ -65,6 +65,7 @@ export default function TemplatePreview({ username, name, subtext, repoLinks, te
         fontFamily: template.font,
         backgroundColor: template.colors.background,
         color: template.colors.text,
+        paddingBottom: '4rem',
       }}
     >
       <div
