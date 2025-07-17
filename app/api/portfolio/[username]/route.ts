@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getPortfolioByUsername } from '@/lib/firebase'; // adjust path if needed
+import { getPortfolioByUsername } from '@/lib/firebase'; // adjust this import path if needed
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { username: string } }
+  context: { params: { username: string } }
 ) {
-  const { username } = params;
+  const username = context.params.username;
 
   if (!username || typeof username !== 'string') {
     return NextResponse.json({ error: 'Invalid username' }, { status: 400 });
