@@ -3,12 +3,12 @@ import { getPortfolioByUsername } from '@/lib/firebase';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { username: string } }
+  context: { params: Record<string, string | string[]> }
 ) {
-  const { username } = params;
+  const { username } = context.params;
 
-  if (!username) {
-    return NextResponse.json({ error: 'Missing username' }, { status: 400 });
+  if (typeof username !== 'string' || !username) {
+    return NextResponse.json({ error: 'Missing or invalid username' }, { status: 400 });
   }
 
   try {
