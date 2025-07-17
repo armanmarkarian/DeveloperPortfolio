@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getPortfolioByUsername } from '@/lib/firebase'; // adjust this import path if needed
+import { getPortfolioByUsername } from '@/lib/firebase';
 
 export async function GET(
   req: NextRequest,
-  context: { params: { username: string } }
+  { params }: { params: { username: string } }
 ) {
-  const username = context.params.username;
+  const { username } = params;
 
-  if (!username || typeof username !== 'string') {
-    return NextResponse.json({ error: 'Invalid username' }, { status: 400 });
+  if (!username) {
+    return NextResponse.json({ error: 'Missing username' }, { status: 400 });
   }
 
   try {
@@ -19,8 +19,8 @@ export async function GET(
     }
 
     return NextResponse.json(data);
-  } catch (error) {
-    console.error('API error:', error);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  } catch (err) {
+    console.error('Error fetching portfolio:', err);
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
 }
