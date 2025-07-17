@@ -118,7 +118,7 @@ export default function Builder({
       <div className="mt-6">
         <label className="font-semibold">Projects:</label>
         {projects.map((proj, idx) => (
-          <div key={idx} className="border p-3 mt-3 rounded bg-gray-50 relative">
+          <div key={idx} className="border p-3 mt-3 rounded bg-[var(--background)] text-[var(--foreground)] relative">
             <button
               onClick={() => {
                 const updated = projects.filter((_, i) => i !== idx);
